@@ -61,6 +61,8 @@ class ClickerUser:
     async def tapCycle(self) -> None:
         deepSleepSec: int = (self.initialAvailableTaps // 3) + rand.randint(100, 300)
         self.availableTaps = await self._getCurrentAvailableTaps()
+        if self.availableTaps == -1:
+            return
 
         while True:
             while True:
