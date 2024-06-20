@@ -7,7 +7,16 @@ async def main() -> None:
     u = USERS[0]
     user = ht.ClickerUser(u["name"], u["auth"], u["tapCost"], u["initialAvailableTaps"])
     await user._setUserInfo()
-    _, selectedUpgrades = await user.calcBestUpgrades()
+
+    max_budget = int(input("Enter Max budget: "))
+    maxProfit, selectedUpgrades = await user.calcBestUpgrades(max_budget)
+
+    try:
+        print(f"Max profit with budget {max_budget}: {maxProfit}")
+        _ = input("Do you want to continue? (Ctrl+C to exit)")
+    except KeyboardInterrupt:
+        exit(0)
+
     for upgrade in selectedUpgrades:
         # print(f"ID: {upgrade['id']}\t\tPrice: {upgrade['price']}\t\tProfit: {upgrade['profitPerHourDelta']}")
         user.buyUpgrade(upgrade["id"])

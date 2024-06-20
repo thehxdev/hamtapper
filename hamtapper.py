@@ -96,7 +96,7 @@ class ClickerUser:
             await asyncio.sleep(deepSleepSec)
 
     
-    async def calcBestUpgrades(self) -> tuple[int, list]:
+    async def calcBestUpgrades(self, max_budget: int) -> tuple[int, list]:
         async def getUpgradesInfo() -> dict | None:
             r = httpx.post("https://api.hamsterkombat.io/clicker/upgrades-for-buy",
                            headers=self.rheaders)
@@ -177,7 +177,6 @@ class ClickerUser:
             if not item["isExpired"] and item["isAvailable"]
         ]
 
-        max_budget = int(input("Enter Max budget: "))
         return knapsack(upgrades, max_budget)
 
 
