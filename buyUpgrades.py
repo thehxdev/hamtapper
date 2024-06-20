@@ -1,10 +1,23 @@
+import sys
 import asyncio
 import hamtapper as ht
 from users import USERS
 
 
+def findUser(users: list, name: str) -> dict | None:
+    for i in range(len(users)):
+        if name == users[i]["name"]:
+            return users[i]
+    return None
+
+
 async def main() -> None:
-    u = USERS[0]
+    argv = sys.argv
+    u = findUser(USERS, argv[1])
+    if u is None:
+        print(f"[ERROR] user \"{argv[1]}\" not found. Press (Ctrl+C) to exit...")
+        exit(1)
+
     user = ht.ClickerUser(u["name"], u["auth"], u["tapCost"], u["initialAvailableTaps"])
     await user._setUserInfo()
 
