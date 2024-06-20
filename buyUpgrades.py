@@ -12,6 +12,7 @@ async def main() -> None:
     maxProfit, selectedUpgrades = await user.calcBestUpgrades(max_budget)
 
     try:
+        print(f"User name: {user.name}")
         print(f"Max profit with budget {max_budget}: {maxProfit}")
         _ = input("Do you want to continue? (Ctrl+C to exit)")
     except KeyboardInterrupt:
