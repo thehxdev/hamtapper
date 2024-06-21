@@ -195,7 +195,7 @@ class ClickerUser:
             print(f"[ERROR] user \"{self.name}\": server returned {r.status_code} code")
             print(jdata)
             return
-        print(f"[INFO] upgrade with id \"{upgradeId}\" bought for user \"{self.name}\" ")
+        print(f"[INFO] upgrade with id \"{upgradeId}\" bought for user \"{self.name}\"")
 
 
     async def _getUserInfo(self) -> dict | None:
