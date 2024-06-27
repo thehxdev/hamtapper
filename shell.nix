@@ -3,7 +3,7 @@ pkgs.mkShell {
     packages = with pkgs; [
         python312Full
         virtualenv
-        python311Packages.pip
+        python312Packages.pip
         nodePackages.pyright
         # ruff-lsp
     ];
