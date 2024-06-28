@@ -13,6 +13,11 @@ def findUser(users: list, name: str) -> dict | None:
 
 async def main() -> None:
     argv = sys.argv
+    if (len(argv) != 3):
+        print(f"Usage: {argv[0]} <USER> <MAX-BUDGET>")
+        print("Press (Ctrl+C) to exit...")
+        exit(1)
+
     u = findUser(USERS, argv[1])
     if u is None:
         print(f"[ERROR] user \"{argv[1]}\" not found. Press (Ctrl+C) to exit...")
@@ -21,7 +26,8 @@ async def main() -> None:
     user = ht.ClickerUser(u["name"], u["auth"], u["tapCost"], u["initialAvailableTaps"])
     await user._setUserInfo()
 
-    max_budget = int(input("Enter Max budget: "))
+    # max_budget = int(input("Enter Max budget: "))
+    max_budget = int(argv[2])
     maxProfit, selectedUpgrades = await user.calcBestUpgrades(max_budget)
 
     try:
