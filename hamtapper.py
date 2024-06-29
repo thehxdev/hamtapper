@@ -60,7 +60,8 @@ class ClickerUser:
 
         r = httpx.post("https://api.hamsterkombat.io/clicker/tap",
                        json=rdata,
-                       headers=self.rheaders)
+                       headers=self.rheaders,
+                       timeout=10)
 
         jdata = r.json()
         if r.status_code != 200:
@@ -99,7 +100,8 @@ class ClickerUser:
     async def calcBestUpgrades(self, max_budget: int) -> tuple[int, list]:
         async def getUpgradesInfo() -> dict | None:
             r = httpx.post("https://api.hamsterkombat.io/clicker/upgrades-for-buy",
-                           headers=self.rheaders)
+                           headers=self.rheaders,
+                           timeout=10)
 
             jdata = r.json()
             if r.status_code != 200:
@@ -188,7 +190,8 @@ class ClickerUser:
 
         r = httpx.post("https://api.hamsterkombat.io/clicker/buy-upgrade",
                        json=rdata,
-                       headers=self.rheaders)
+                       headers=self.rheaders,
+                       timeout=10)
 
         jdata: dict = r.json()
         if r.status_code != 200:
