@@ -36,7 +36,6 @@ class ClickerUser:
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0",
             "Accept": "application/json",
             "Accept-Language": "en-US,en;q=0.5",
-            # "Accept-Encoding": "gzip, deflate, br, zstd",
             "Referer": "https://hamsterkombat.io/",
             "Authorization": f"{authKey}",
             "Content-Type": "application/json",
@@ -97,6 +96,8 @@ class ClickerUser:
             await asyncio.sleep(deepSleepSec)
 
     
+    # knapsakck algorigthm copy-pasted from:
+    # https://colab.research.google.com/drive/14UNSWGEo8Owjb0F9200-RMqZttONt-Z5?usp=sharing
     async def calcBestUpgrades(self, max_budget: int) -> tuple[int, list]:
         async def getUpgradesInfo() -> dict | None:
             r = httpx.post("https://api.hamsterkombat.io/clicker/upgrades-for-buy",
@@ -111,6 +112,8 @@ class ClickerUser:
 
             return jdata
 
+        # knapsakck algorigthm copy-pasted from:
+        # https://colab.research.google.com/drive/14UNSWGEo8Owjb0F9200-RMqZttONt-Z5?usp=sharing
         def calculate_bound(node, n, max_budget, upgrades):
             if node.weight >= max_budget:
                 return 0
@@ -129,6 +132,8 @@ class ClickerUser:
 
             return profit_bound
 
+        # knapsakck algorigthm copy-pasted from:
+        # https://colab.research.google.com/drive/14UNSWGEo8Owjb0F9200-RMqZttONt-Z5?usp=sharing
         def knapsack(upgrades, max_budget):
             upgrades = [u for u in upgrades if u["price"] != 0]
             upgrades.sort(key=lambda x: x["profitPerHourDelta"] / x["price"], reverse=True)
