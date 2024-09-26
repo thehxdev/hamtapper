@@ -1,3 +1,9 @@
+# Hamtapper bot
+# Author: https://github.com/thehxdev
+
+# knapsakck algorigthm used for buying upgrades copy-pasted from:
+# https://colab.research.google.com/drive/14UNSWGEo8Owjb0F9200-RMqZttONt-Z5?usp=sharing
+
 import sys
 import asyncio
 import hamtapper as ht

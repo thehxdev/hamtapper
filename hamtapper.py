@@ -1,3 +1,6 @@
+# knapsakck algorigthm used for buying upgrades copy-pasted from:
+# https://colab.research.google.com/drive/14UNSWGEo8Owjb0F9200-RMqZttONt-Z5?usp=sharing
+
 import time
 import httpx
 import asyncio

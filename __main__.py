@@ -1,3 +1,6 @@
+# Hamtapper bot
+# Author: https://github.com/thehxdev
+
 import asyncio
 from threading import Thread
 import hamtapper as ht
